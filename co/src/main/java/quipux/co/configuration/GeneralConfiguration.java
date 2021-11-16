@@ -28,13 +28,13 @@ public class GeneralConfiguration {
         return new MyBeanWithPropertiesImplements(name, apellido);
     }
 
-//    @Bean
-//    public DataSource dataSource(){
-//        DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
-//        dataSourceBuilder.driverClassName("org.h2.Driver");
-//        dataSourceBuilder.url("jdbc:h2:mem:prueba");
-//        dataSourceBuilder.username("diana");
-//        dataSourceBuilder.password("");
-//        return dataSourceBuilder.build();
-//    }
+    @Bean
+    public DataSource dataSource(){
+        DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
+        dataSourceBuilder.driverClassName("org.h2.Driver");
+        dataSourceBuilder.url("jdbc:h2:mem:prueba");
+        dataSourceBuilder.username("diana");
+        dataSourceBuilder.password("");
+        return dataSourceBuilder.build();
+    }
 }

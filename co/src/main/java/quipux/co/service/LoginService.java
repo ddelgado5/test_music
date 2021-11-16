@@ -17,15 +17,15 @@ public class LoginService {
         this.userRepository = userRepository;
     }
 
-    public String login(String email, String password){
+    public boolean login(String email, String password){
         System.out.println("login: " + email + " - "+ password);
         User user = userRepository.findByUserEmailPassword(email, password);
         if(user != null){
             System.out.println("se loguea: " + email + " - "+ password);
-            return "bienvenido ";
+            return true;
 
         }
-        return "Usuario o contraseña no válida ";
+        return false;
     }
 
 }

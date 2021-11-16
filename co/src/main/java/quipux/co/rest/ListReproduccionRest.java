@@ -1,5 +1,6 @@
 package quipux.co.rest;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,7 +25,6 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/reproduccion")
 public class ListReproduccionRest {
 
     private GetListReproduccion getListReproduccion;
@@ -52,12 +52,21 @@ public class ListReproduccionRest {
     }
 
     @GetMapping("/lists/{nombre}")
-    ListaDeReproducciones getNombreRepro(@RequestParam (required = false) String nombre ){
-        return getListReproduccion.getNombreRepro(nombre);
+    ResponseEntity<ListaDeReproducciones> getNombreRepro(@PathVariable (required = false) String nombre ){
+        ListaDeReproducciones result = getListReproduccion.getNombreRepro(nombre);
+        if(result != null){
+            return new ResponseEntity<>(getListReproduccion.getNombreRepro(nombre), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(getListReproduccion.getNombreRepro(nombre), HttpStatus.NO_CONTENT);
     }
 
     @PostMapping("/lists")
-    ResponseEntity<ListaDeReproducciones> newList(@RequestBody ListaDeReproducciones listaDeReproducciones){
+    ResponseEntity<ListaDeReproducciones> newList(@RequestBody ListaDeReproduccion listaDeReproduccion){
+        ListaDeReproducciones listaDeReproducciones = new ListaDeReproducciones();
+        BeanUtils.copyProperties(listaDeReproduccion, listaDeReproducciones);
+        if(listaDeReproducciones.getCancion() != null){
+            cancionService.saveTransactional(listaDeReproducciones.getCancion());
+        }
         return new ResponseEntity<>(postListReproduccion.save(listaDeReproducciones), HttpStatus.CREATED);
     }
 

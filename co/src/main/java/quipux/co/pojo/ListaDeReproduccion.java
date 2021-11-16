@@ -1,12 +1,15 @@
 package quipux.co.pojo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ListaDeReproduccion {
 
     private String nombre;
     private String descripcion;
-    private Canciones canciones;
+    private ArrayList<Canciones> canciones;
 
-    public ListaDeReproduccion(String nombre, String descripcion, Canciones canciones) {
+    public ListaDeReproduccion(String nombre, String descripcion, ArrayList<Canciones> canciones) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.canciones = canciones;
@@ -28,11 +31,11 @@ public class ListaDeReproduccion {
         this.descripcion = descripcion;
     }
 
-    public Canciones getCanciones() {
-        return canciones;
-    }
-
-    public void setCanciones(Canciones canciones) {
-        this.canciones = canciones;
-    }
+//    public Canciones getCanciones() {
+//        return canciones;
+//    }
+//
+//    public void setCanciones(Canciones canciones) {
+//        this.canciones = canciones;
+//    }
 }

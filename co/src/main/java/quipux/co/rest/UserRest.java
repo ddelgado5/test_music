@@ -9,7 +9,7 @@ import quipux.co.entity.User;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/users")
 public class UserRest {
 
     private GetUser getUser;

@@ -9,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.ArrayList;
@@ -28,17 +30,10 @@ public class ListaDeReproducciones {
     @Column(name = "descripcion", length = 150)
     private String descripcion;
 
-//    @OneToMany(mappedBy = "cancion", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//    @JsonManagedReference
-//    private List<Cancion> cancion = new ArrayList<>();
+    @OneToMany(mappedBy = "listaDeReproducciones", fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<Cancion> cancion = new ArrayList<>();
 
-//    @OneToMany(mappedBy = "cancion", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//    @JsonManagedReference
-//    @Column(name = "cancion")
-//        private List<Cancion> cancion = new ArrayList<>();
-
-
-//    public ListaDeReproducciones(String nombre, String descripcion, List<Cancion> cancion) {
 
     public ListaDeReproducciones(){
 
@@ -48,11 +43,11 @@ public class ListaDeReproducciones {
     }
 
 
-    public ListaDeReproducciones(String nombre, String descripcion) {
+    public ListaDeReproducciones(String nombre, String descripcion, List<Cancion> cancion) {
         super();
         this.nombre = nombre;
         this.descripcion = descripcion;
-//        this.cancion = cancion;
+        this.cancion = cancion;
     }
 
     public ListaDeReproducciones(Long id){
@@ -87,18 +82,18 @@ public class ListaDeReproducciones {
 //    public List<Cancion> getCancion() {
 //        return cancion;
 //    }
-//
-//    public void setCancion(List<Cancion> cancion) {
-//        this.cancion = cancion;
+////
+//    public void setCancion(List<Cancion> canciones) {
+//        this.cancion = canciones;
 //    }
 
-//    public List<Cancion> getCancion() {
-//        return cancion;
-//    }
-//
-//    public void setCancion(List<Cancion> cancion) {
-//        this.cancion = cancion;
-//    }
+    public List<Cancion> getCancion() {
+        return cancion;
+    }
+
+    public void setCancion(List<Cancion> cancion) {
+        this.cancion = cancion;
+    }
 
     @Override
     public String toString() {
@@ -106,9 +101,9 @@ public class ListaDeReproducciones {
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", descripcion='" + descripcion + '\''
-//                +
-//                ", cancion=" + cancion +
-//                '}'
+                +
+                ", cancion=" + cancion +
+                '}'
                 ;
     }
 }

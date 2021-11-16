@@ -1,13 +1,20 @@
 package quipux.co.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Cancion")
@@ -30,18 +37,21 @@ public class Cancion {
     private String anno;
 
     @ManyToOne
+    @JoinColumn(name = "listaDeReproducciones")
     private ListaDeReproducciones listaDeReproducciones;
+
+
 
     public Cancion(){
 
     }
 //    public Cancion(String titulo, String artista, String album, String anno, ListaDeReproducciones listaDeReproducciones) {
-    public Cancion(String titulo, String artista, String album, String anno) {
+    public Cancion(String titulo, String artista, String album, String anno, ListaDeReproducciones listaDeReproducciones) {
         this.titulo = titulo;
         this.artista = artista;
         this.album = album;
         this.anno = anno;
-//        this.listaDeReproducciones = listaDeReproducciones;
+        this.listaDeReproducciones = listaDeReproducciones;
     }
 
     public Long getId() {
@@ -100,9 +110,9 @@ public class Cancion {
                 ", artista='" + artista + '\'' +
                 ", album='" + album + '\'' +
                 ", anno='" + anno + '\''
-//                +
-//                ", listaDeReproducciones=" + listaDeReproducciones +
-//                '}'
+                +
+                ", listaDeReproducciones=" + listaDeReproducciones +
+                '}'
                 ;
     }
 }

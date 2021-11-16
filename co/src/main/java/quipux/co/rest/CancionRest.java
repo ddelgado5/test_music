@@ -11,7 +11,7 @@ import quipux.co.service.CancionService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/cancion")
+@RequestMapping("/cancion")
 public class CancionRest {
 
     private GetCancion getCancion;

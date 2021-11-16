@@ -40,8 +40,8 @@ public class ListReproduccionService {
         return listaDeReproduccionesRepository.save(listaDeReproducciones);
     }
 
-    public void delete(String nombre) {
+    public void delete(Long id) {
 
-        listaDeReproduccionesRepository.delete(new ListaDeReproducciones(nombre));
+        listaDeReproduccionesRepository.delete(new ListaDeReproducciones(id));
     }
 }

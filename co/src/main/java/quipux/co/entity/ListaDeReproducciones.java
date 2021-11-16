@@ -1,11 +1,18 @@
 package quipux.co.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "listaDeReproducciones")
@@ -25,6 +32,12 @@ public class ListaDeReproducciones {
 //    @JsonManagedReference
 //    private List<Cancion> cancion = new ArrayList<>();
 
+//    @OneToMany(mappedBy = "cancion", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    @JsonManagedReference
+//    @Column(name = "cancion")
+//        private List<Cancion> cancion = new ArrayList<>();
+
+
 //    public ListaDeReproducciones(String nombre, String descripcion, List<Cancion> cancion) {
 
     public ListaDeReproducciones(){
@@ -33,6 +46,7 @@ public class ListaDeReproducciones {
     public ListaDeReproducciones(String nombre){
         this.nombre = nombre;
     }
+
 
     public ListaDeReproducciones(String nombre, String descripcion) {
         super();
@@ -60,7 +74,24 @@ public class ListaDeReproducciones {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    //
+//    public List<Cancion> getCancion() {
+//        return cancion;
+//    }
 //
+//    public void setCancion(List<Cancion> cancion) {
+//        this.cancion = cancion;
+//    }
+
 //    public List<Cancion> getCancion() {
 //        return cancion;
 //    }

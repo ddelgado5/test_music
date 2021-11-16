@@ -83,7 +83,7 @@ public class CoApplication implements CommandLineRunner {
 	}
 
 	private void deleteRegister(){
-		listReproduccionService.delete("a");
+		listReproduccionService.delete(1L);
 		listReproduccionService.getAllRepro().stream()
 				.forEach(item -> LOGGER.info("despues de borrar: "+ item));
 

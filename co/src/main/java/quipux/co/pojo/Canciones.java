@@ -2,12 +2,14 @@ package quipux.co.pojo;
 
 public class Canciones {
 
+//    private Long id;
     private String titulo;
     private String artista;
     private String album;
     private String anno;
 
-    public Canciones(String titulo, String artista, String album, String anno) {
+    public Canciones(/**Long id,**/ String titulo, String artista, String album, String anno) {
+//        this.id = id;
         this.titulo = titulo;
         this.artista = artista;
         this.album = album;

@@ -62,8 +62,13 @@ public class ListReproduccionRest {
     }
 
     @DeleteMapping("/lists/{nombre}")
-    ResponseEntity<ListaDeReproducciones> deleteListById(@PathVariable String nombre){
-        deleteListReproduccion.remove(nombre);
+    ResponseEntity deleteListById(@PathVariable String nombre){
+        ListaDeReproducciones listaDeReproduccion = getListReproduccion.getNombreRepro(nombre);
+        System.out.println("dasd");
+        System.out.println(listaDeReproduccion);
+        if (listaDeReproduccion != null){
+            deleteListReproduccion.remove(listaDeReproduccion.getId());
+        }
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

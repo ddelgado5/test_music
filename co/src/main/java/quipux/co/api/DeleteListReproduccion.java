@@ -13,7 +13,7 @@ public class DeleteListReproduccion {
         this.listReproduccionService = listReproduccionService;
     }
 
-    public void remove(String nombre){
-    listReproduccionService.delete(nombre);
+    public void remove(Long id){
+    listReproduccionService.delete(id);
     };
 }

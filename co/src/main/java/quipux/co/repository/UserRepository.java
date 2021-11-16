@@ -15,6 +15,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query("Select u from User u WHERE u.email=?1")
     Optional<User> findByUserEmail(String email);
 
+    @Query("Select u from User u WHERE u.email=?1 and u.password=?2")
+    User findByUserEmailPassword(String email, String password);
+
 //    @Query("SELECT new quipux.co.Dto.UserDto(u.id, u.email, u.password)" +
 //            "FROM User u "
 //            +"WHERE u.id=:param")

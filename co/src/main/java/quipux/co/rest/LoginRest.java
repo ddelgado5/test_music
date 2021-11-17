@@ -5,7 +5,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +21,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import io.jsonwebtoken.Jwts;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 public class LoginRest {
 
@@ -34,7 +32,6 @@ public class LoginRest {
 
     @PostMapping("/login")
     ResponseEntity login(@RequestBody User user){
-
 
         String token = getJWTToken(user.getEmail());
         System.out.println("token");

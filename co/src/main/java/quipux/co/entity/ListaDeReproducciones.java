@@ -30,7 +30,7 @@ public class ListaDeReproducciones {
     @Column(name = "descripcion", length = 150)
     private String descripcion;
 
-    @OneToMany(mappedBy = "listaDeReproducciones", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "listaDeReproducciones", fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<Cancion> cancion = new ArrayList<>();
 
